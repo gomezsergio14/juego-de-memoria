@@ -20,20 +20,20 @@ body {
   }
   
 .cuadro {
-    width: calc(20% - 10px);
+    width: calc(25% - 10px);
     height: calc(25% - 10px);
     margin: 5px;
     position: relative;
-    transform: scale(1);
+    /* transform: scale(1);
     transform-style: preserve-3d;
-    transition: transform .5s;
-    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    transition: transform .5s; */
+    /* box-shadow: 1px 1px 1px rgba(0,0,0,.3); */
   }
   
-.cuadro:active {
+/* .cuadro:active {
     transform: scale(0.97);
     transition: transform .2s;
-  }
+  } */
   
 .frente,
 .dorso{
@@ -47,6 +47,8 @@ body {
 .dorso{
     background-image: radial-gradient(#0f0,rgba(20, 136, 10, 0.801));
 }  
+
+/*colores para el juego*/
 .color0 { background-color: darkcyan; }
 .color1 { background-color: rgb(219, 237, 28); }
 .color2 { background-color: darkturquoise; }
@@ -55,5 +57,6 @@ body {
 .color5 { background-color: darkorchid; }
 .color6 { background-color: darkorange; }
 .color7 { background-color: darkred; }
-.color8 { background-color: rgb(230, 29, 149); }
-.color9 { background-color: darksalmon; }
+
+/* .color8 { background-color: rgb(230, 29, 149); }
+.color9 { background-color: darksalmon; } */

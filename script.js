@@ -8,6 +8,11 @@ function comparar(varUno,varDos){
     alert("Los valores ingresados no son iguales")
   }
 }
+//Arreglo
+let numeros = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+
+//Ordenamiento aleatorio
+numeros = numeros.sort(() => { return Math.random() - 0.5; });
 
 do{
 alert("Ingrese los valores de las variables 1 y 2, solo son validos números enteros");
