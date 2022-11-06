@@ -16,12 +16,14 @@ body {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    perspective: 1000px;
+    /* perspective: 1000px; */
   }
   
 .cuadro {
-    width: calc(25% - 10px);
-    height: calc(25% - 10px);
+    width: 100px;
+    height: 100px;
+    /* width: calc(25% - 10px);
+    height: calc(25% - 10px); */
     margin: 5px;
     position: relative;
   }
