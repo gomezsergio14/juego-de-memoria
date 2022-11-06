@@ -12,7 +12,7 @@ body {
   
 .contenedor{
     width: 80%;
-    height: 100vh;
+    height: 60vh;/*100vh*/
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -24,7 +24,7 @@ body {
     height: 100px;
     /* width: calc(25% - 10px);
     height: calc(25% - 10px); */
-    margin: 5px;
+    /* margin: 5px; */
     position: relative;
   }
   
