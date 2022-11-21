@@ -6,6 +6,7 @@ let controlm = false;
 let auxm = false;
 let cuadroUno, cuadroDos;
 let jugadores = [];
+let dificultadElegida="dificil";
 
 //clases
 class Jugador {
@@ -73,5 +74,9 @@ btnAgregar.addEventListener("click", (e) => {
   ul.appendChild(li);
 });
 
-// const jugador = new Jugador(nombreJugador, dificultadElegida);
+const jugador = new Jugador(nombreJugador, dificultadElegida);
+sessionStorage.setItem('player',JSON.stringify(jugador));
+
+//muestro por consola lo que esta almacenado en sessionstorage
+console.log(sessionStorage.getItem('player'));
 // jugadores.push(jugador);

@@ -8,8 +8,14 @@ body {
     height: 100vh;
     display: flex;
     background: #1EA896;
+    flex-direction: row;
   }
-  
+.contenedor0{
+  padding: 10px;
+}
+h3{
+  margin: 5px;
+}
 .contenedor{
     width: 80%;
     height: 60vh;/*100vh*/
@@ -17,7 +23,9 @@ body {
     display: flex;
     flex-wrap: wrap;
   }
-  
+  button{
+    display: block;
+  }
 .cuadro {
     width: calc(25% - 10px);
     height: calc(25% - 10px); 
