@@ -11,49 +11,49 @@
     <div class="contenedor0">
       <form action="">
         <h3>1º Ingrese el nombre de jugador</h3>
-        <input
-          id="nombreJugador"
-          type="text"
-          placeholder="agregar nombre de jugador"
-        />
+        <input id="nombreJugador" type="text" placeholder="nombre de jugador..."/>
         <h3>2º Elija la dificultad</h3>
         <input type="radio" value="facil" name="dificultad" id="dif_facil" />
         FACIL
-        <input
-          type="radio"
-          value="dificil"
-          name="dificultad"
-          id="dif_dificil"
-        />
+        <input type="radio" value="dificil" name="dificultad" id="dif_dificil"/>
         DIFICIL
         <button type="submit" id="btnAgregar">Agregar</button>
       </form>
-
-      <p id="muestroNombre"></p>
+      <div class="contenedorLista">
+        <ul id="listaJugadores">
+  
+        </ul>
+      </div>
     </div>
+   
+
+    <!-- <div class="empty">
+      <p>Sin jugadores</p>
+    </div> -->
+
     <div class="contenedor">
       <table>
         <tr>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c0">
               <div class="frente color0"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c0">
               <div class="frente color0"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c1">
               <div class="frente color1"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c1">
               <div class="frente color1"></div>
               <div class="dorso"></div>
             </div>
@@ -61,25 +61,25 @@
         </tr>
         <tr>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c2">
               <div class="frente color2"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c2">
               <div class="frente color2"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c3">
               <div class="frente color3"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c3">
               <div class="frente color3"></div>
               <div class="dorso"></div>
             </div>
@@ -87,25 +87,25 @@
         </tr>
         <tr>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c4">
               <div class="frente color4"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c4">
               <div class="frente color4"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c5">
               <div class="frente color5"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c5">
               <div class="frente color5"></div>
               <div class="dorso"></div>
             </div>
@@ -113,25 +113,25 @@
         </tr>
         <tr>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c6">
               <div class="frente color6"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c6">
               <div class="frente color6"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c7">
               <div class="frente color7"></div>
               <div class="dorso"></div>
             </div>
           </td>
           <td>
-            <div class="cuadro">
+            <div class="cuadro" data-carta="c7">
               <div class="frente color7"></div>
               <div class="dorso"></div>
             </div>

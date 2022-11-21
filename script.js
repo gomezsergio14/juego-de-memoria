@@ -1,6 +1,10 @@
 let control = false;
 let aux = false;
 
+const btnAgregar = document.getElementById("btnAgregar");
+const nombreJugador = document.getElementById("nombreJugador");
+const ul = document.getElementById("listaJugadores");
+
 //clases
 class Jugador {
   constructor(nombre, dificultad) {
@@ -22,15 +26,20 @@ function desordenar(array) {
 }
 
 do {
-  //Pido datos
-  // let nombreJugador = prompt("Ingrese nombre del jugador");
-  let nombreJugador = document.getElementById("nombreJugador").value;
-  // let dificultadElegida = parseInt(
-  //   prompt(
-  //     "Elija la dificultad\n-Presione 1 para fácil\n-Presione 2 para difícil"
-  //   )
-  // );
-  // let dificultadElegida = document.getElementById("difcultad").value;
+//evito recarga de página
+btnAgregar.addEventListener('click',(e)=>{
+  e.preventDefault();
+  // alert("hiciste click amigo");
+
+   //Pido datos
+   let estaJugando = nombreJugador.value;
+   const li=document.createElement('li');
+   const p = document.createElement('p');
+   p.textContent = estaJugando;
+   li.appendChild(p);
+   ul.appendChild(li);
+});
+
 
 
   // var dificultadElegida = document.getElementsByName("dificultad");
@@ -42,15 +51,7 @@ do {
   jugadores.push(jugador);
   alert(`Nombre de jugador: ${nombreJugador}`);
 
-  // if (dificultadElegida == 1) {
-  //   alert(
-  //     `Nombre de jugador: ${nombreJugador}\nNivel de dificultad elegido: Fácil`
-  //   );
-  // } else if (dificultadElegida == 2) {
-  //   alert(
-  //     `Nombre de jugador: ${nombreJugador}\nNivel de dificultad elegido: Dificil`
-  //   );
-  // }
+  
   //pido numeros
   // alert(
   //   "Ingrese 8 valores, solo son válidos números enteros\nLos valores se guardaran en un arreglo"
@@ -65,12 +66,7 @@ do {
   desordenar(numeros);
 
   //Muestro los valores
-  // alert(
-  //   "Los valores ingresados en el arreglo son: " +
-  //     numerosAux +
-  //     "\nEl arreglo después del ordenamiento aleatorio es: " +
-  //     numeros
-  // );
+
 
   aux = parseInt(
     prompt(
