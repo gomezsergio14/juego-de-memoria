@@ -7,7 +7,7 @@
 body {
     height: 100vh;
     display: flex;
-    background: black;
+    background: #1EA896;
   }
   
 .contenedor{
@@ -38,7 +38,7 @@ body {
   }
 
 .dorso{
-    background-image: radial-gradient(#0f0,rgba(20, 136, 10, 0.801));
+    background-color: #4C5454;
 }  
 
 /*colores para el juego*/

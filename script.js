@@ -23,44 +23,54 @@ function desordenar(array) {
 
 do {
   //Pido datos
-  let nombreJugador = prompt("Ingrese nombre del jugador");
-  let dificultadElegida = parseInt(
-    prompt(
-      "Elija la dificultad\n-Presione 1 para fácil\n-Presione 2 para difícil"
-    )
-  );
+  // let nombreJugador = prompt("Ingrese nombre del jugador");
+  let nombreJugador = document.getElementById("nombreJugador").value;
+  // let dificultadElegida = parseInt(
+  //   prompt(
+  //     "Elija la dificultad\n-Presione 1 para fácil\n-Presione 2 para difícil"
+  //   )
+  // );
+  // let dificultadElegida = document.getElementById("difcultad").value;
+
+
+  // var dificultadElegida = document.getElementsByName("dificultad");
+
+  // for(var i=0; i<dificultadElegida.length; i++) {
+  //   alert(" Elemento: " + dificultadElegida[i].value + "\n Seleccionado: " + dificultadElegida[i].checked);
+  // }
   const jugador = new Jugador(nombreJugador, dificultadElegida);
   jugadores.push(jugador);
+  alert(`Nombre de jugador: ${nombreJugador}`);
 
-  if (dificultadElegida == 1) {
-    alert(
-      `Nombre de jugador: ${nombreJugador}\nNivel de dificultad elegido: Fácil`
-    );
-  } else if (dificultadElegida == 2) {
-    alert(
-      `Nombre de jugador: ${nombreJugador}\nNivel de dificultad elegido: Dificil`
-    );
-  }
+  // if (dificultadElegida == 1) {
+  //   alert(
+  //     `Nombre de jugador: ${nombreJugador}\nNivel de dificultad elegido: Fácil`
+  //   );
+  // } else if (dificultadElegida == 2) {
+  //   alert(
+  //     `Nombre de jugador: ${nombreJugador}\nNivel de dificultad elegido: Dificil`
+  //   );
+  // }
   //pido numeros
-  alert(
-    "Ingrese 8 valores, solo son válidos números enteros\nLos valores se guardaran en un arreglo"
-  );
+  // alert(
+  //   "Ingrese 8 valores, solo son válidos números enteros\nLos valores se guardaran en un arreglo"
+  // );
 
-  for (let i = 0; i <= 7; i++) {
-    numeros[i] = parseInt(prompt("Ingrese valor de la variable " + i));
-    numerosAux[i] = numeros[i];
-  }
+  // for (let i = 0; i <= 7; i++) {
+  //   numeros[i] = parseInt(prompt("Ingrese valor de la variable " + i));
+  //   numerosAux[i] = numeros[i];
+  // }
 
   //Ordenamiento aleatorio
   desordenar(numeros);
 
   //Muestro los valores
-  alert(
-    "Los valores ingresados en el arreglo son: " +
-      numerosAux +
-      "\nEl arreglo después del ordenamiento aleatorio es: " +
-      numeros
-  );
+  // alert(
+  //   "Los valores ingresados en el arreglo son: " +
+  //     numerosAux +
+  //     "\nEl arreglo después del ordenamiento aleatorio es: " +
+  //     numeros
+  // );
 
   aux = parseInt(
     prompt(
