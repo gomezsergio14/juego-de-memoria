@@ -16,16 +16,24 @@ body {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    /* perspective: 1000px; */
   }
   
 .cuadro {
-    width: 100px;
-    height: 100px;
-    /* width: calc(25% - 10px);
-    height: calc(25% - 10px); */
-    /* margin: 5px; */
+    width: calc(25% - 10px);
+    height: calc(25% - 10px); 
+    margin: 5px;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .3s;
     position: relative;
+  }
+  .cuadro:active {
+    transform: scale(0.97);
+    transition: transform .1s;
+  }
+  
+.cuadro.flip {
+    transform: rotateY(180deg);
   }
   
 
@@ -35,8 +43,11 @@ body {
     height: 100%;
     position: absolute;
     border-radius: 5px;
+    backface-visibility: hidden;
   }
-
+  .frente {
+    transform: rotateY(180deg);
+  }
 .dorso{
     background-color: #4C5454;
 }  

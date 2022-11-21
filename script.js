@@ -1,9 +1,11 @@
-let control = false;
-let aux = false;
-
+const cuadro = document.querySelectorAll(".cuadro");
 const btnAgregar = document.getElementById("btnAgregar");
 const nombreJugador = document.getElementById("nombreJugador");
 const ul = document.getElementById("listaJugadores");
+let controlm = false;
+let auxm = false;
+let cuadroUno, cuadroDos;
+let jugadores = [];
 
 //clases
 class Jugador {
@@ -13,69 +15,63 @@ class Jugador {
   }
 }
 
-//Arreglos
-let jugadores = [];
-let numeros = [];
-let numerosAux = [];
-
-//Funciones
-function desordenar(array) {
-  array = array.sort(() => {
-    return Math.random() - 0.5;
-  });
+function darVuelta() {
+  if (auxm) return;
+  if (this === cuadroUno) return;
+  this.classList.add("flip");
+  if (!controlm) {
+    controlm = true;
+    cuadroUno = this;
+    return;
+  }
+  cuadroDos = this;
+  coincidencia();
 }
 
-do {
-//evito recarga de página
-btnAgregar.addEventListener('click',(e)=>{
-  e.preventDefault();
-  // alert("hiciste click amigo");
+function coincidencia() {
+  let sonIguales = cuadroUno.dataset.carta === cuadroDos.dataset.carta;
+  sonIguales ? desactivarCuadros() : ocultar();
+}
 
-   //Pido datos
-   let estaJugando = nombreJugador.value;
-   const li=document.createElement('li');
-   const p = document.createElement('p');
-   p.textContent = estaJugando;
-   li.appendChild(p);
-   ul.appendChild(li);
+function desactivarCuadros() {
+  cuadroUno.removeEventListener("click", darVuelta);
+  cuadroDos.removeEventListener("click", darVuelta);
+  reset();
+}
+
+function ocultar() {
+  auxm = true;
+  setTimeout(() => {
+    cuadroUno.classList.remove("flip");
+    cuadroDos.classList.remove("flip");
+    reset();
+  }, 600);
+}
+
+function reset() {
+  [controlm, auxm] = [false, false];
+  [cuadroUno, cuadroDos] = [null, null];
+}
+
+(function desordenar() {
+  cuadro.forEach((cuadro) => {
+    let randomPos = Math.floor(Math.random() * 20);
+    cuadro.style.order = randomPos;
+  });
+})();
+
+cuadro.forEach((cuadro) => cuadro.addEventListener("click", darVuelta));
+
+//evito recarga de página
+btnAgregar.addEventListener("click", (e) => {
+  e.preventDefault();
+  let estaJugando = nombreJugador.value;
+  const li = document.createElement("li");
+  const p = document.createElement("p");
+  p.textContent = estaJugando;
+  li.appendChild(p);
+  ul.appendChild(li);
 });
 
-
-
-  // var dificultadElegida = document.getElementsByName("dificultad");
-
-  // for(var i=0; i<dificultadElegida.length; i++) {
-  //   alert(" Elemento: " + dificultadElegida[i].value + "\n Seleccionado: " + dificultadElegida[i].checked);
-  // }
-  const jugador = new Jugador(nombreJugador, dificultadElegida);
-  jugadores.push(jugador);
-  alert(`Nombre de jugador: ${nombreJugador}`);
-
-  
-  //pido numeros
-  // alert(
-  //   "Ingrese 8 valores, solo son válidos números enteros\nLos valores se guardaran en un arreglo"
-  // );
-
-  // for (let i = 0; i <= 7; i++) {
-  //   numeros[i] = parseInt(prompt("Ingrese valor de la variable " + i));
-  //   numerosAux[i] = numeros[i];
-  // }
-
-  //Ordenamiento aleatorio
-  desordenar(numeros);
-
-  //Muestro los valores
-
-
-  aux = parseInt(
-    prompt(
-      "Desea continuar ingresando valores?\nPresione 1 para continuar\nPresione 2 para salir"
-    )
-  );
-  if (aux == 1) {
-    control = true;
-  } else if (aux == 2) {
-    control = false;
-  }
-} while (control);
+// const jugador = new Jugador(nombreJugador, dificultadElegida);
+// jugadores.push(jugador);
