@@ -6,9 +6,8 @@ let controlm = false;
 let auxm = false;
 let cuadroUno, cuadroDos;
 let jugadores = [];
-let dificultadElegida="dificil";
+let dificultadElegida = "dificil";
 
-//clases
 class Jugador {
   constructor(nombre, dificultad) {
     this.nombre = nombre;
@@ -63,7 +62,7 @@ function reset() {
 
 cuadro.forEach((cuadro) => cuadro.addEventListener("click", darVuelta));
 
-//evito recarga de página
+
 btnAgregar.addEventListener("click", (e) => {
   e.preventDefault();
   let estaJugando = nombreJugador.value;
@@ -72,11 +71,11 @@ btnAgregar.addEventListener("click", (e) => {
   p.textContent = estaJugando;
   li.appendChild(p);
   ul.appendChild(li);
+  const jugador = new Jugador(estaJugando, dificultadElegida);
+  sessionStorage.setItem("nombrePlayer", estaJugando);
+  sessionStorage.setItem("difPlayer", dificultadElegida);
+
+  //muestro por consola lo que esta almacenado en sessionstorage
+  console.log(sessionStorage.getItem("nombrePlayer"));
+  console.log(sessionStorage.getItem("difPlayer"));
 });
-
-const jugador = new Jugador(nombreJugador, dificultadElegida);
-sessionStorage.setItem('player',JSON.stringify(jugador));
-
-//muestro por consola lo que esta almacenado en sessionstorage
-console.log(sessionStorage.getItem('player'));
-// jugadores.push(jugador);

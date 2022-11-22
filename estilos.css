@@ -1,72 +1,86 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
-    height: 100vh;
-    display: flex;
-    background: #1EA896;
-    flex-direction: row;
-  }
-.contenedor0{
+  height: 100vh;
+  display: flex;
+  background: #1ea896;
+  flex-direction: row;
+}
+.contenedor0 {
   padding: 10px;
 }
-h3{
+h3 {
   margin: 5px;
 }
-.contenedor{
-    width: 80%;
-    height: 60vh;/*100vh*/
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  button{
-    display: block;
-  }
+.contenedor {
+  width: 80%;
+  height: 60vh; /*100vh*/
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+button {
+  display: block;
+}
 .cuadro {
-    width: calc(25% - 10px);
-    height: calc(25% - 10px); 
-    margin: 5px;
-    transform: scale(1);
-    transform-style: preserve-3d;
-    transition: transform .3s;
-    position: relative;
-  }
-  .cuadro:active {
-    transform: scale(0.97);
-    transition: transform .1s;
-  }
-  
+  width: calc(25% - 10px);
+  height: calc(25% - 10px);
+  margin: 5px;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.3s;
+  position: relative;
+}
+.cuadro:active {
+  transform: scale(0.97);
+  transition: transform 0.1s;
+}
+
 .cuadro.flip {
-    transform: rotateY(180deg);
-  }
-  
+  transform: rotateY(180deg);
+}
 
 .frente,
-.dorso{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    border-radius: 5px;
-    backface-visibility: hidden;
-  }
-  .frente {
-    transform: rotateY(180deg);
-  }
-.dorso{
-    background-color: #4C5454;
-}  
+.dorso {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 5px;
+  backface-visibility: hidden;
+}
+.frente {
+  transform: rotateY(180deg);
+}
+.dorso {
+  background-color: #4c5454;
+}
 
 /*colores para el juego*/
-.color0 { background-color: darkcyan; }
-.color1 { background-color: rgb(219, 237, 28); }
-.color2 { background-color: darkturquoise; }
-.color3 { background-color: darkblue; }
-.color4 { background-color: rgb(119, 244, 105); }
-.color5 { background-color: darkorchid; }
-.color6 { background-color: darkorange; }
-.color7 { background-color: darkred; }
-
+.color0 {
+  background-color: darkcyan;
+}
+.color1 {
+  background-color: rgb(219, 237, 28);
+}
+.color2 {
+  background-color: darkturquoise;
+}
+.color3 {
+  background-color: darkblue;
+}
+.color4 {
+  background-color: rgb(119, 244, 105);
+}
+.color5 {
+  background-color: darkorchid;
+}
+.color6 {
+  background-color: darkorange;
+}
+.color7 {
+  background-color: darkred;
+}
