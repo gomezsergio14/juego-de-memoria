@@ -11,17 +11,28 @@ body {
   flex-direction: row;
 }
 .contenedor0 {
+  width: 100%;
+  height: 100vh;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ 
+}
+input{
+  width: 256px;
 }
 h3 {
   margin: 5px;
 }
-.contenedor {
+.contenedor1 {
   width: 80%;
   height: 60vh; /*100vh*/
   margin: auto;
-  display: flex;
-  flex-wrap: wrap;
+  display: none;
+  /*display: flex;*//*esto lo tendrias que activar con js*/
+  /*flex-wrap: wrap;*//*activar cuando se active el display flex*/
 }
 button {
   display: block;
