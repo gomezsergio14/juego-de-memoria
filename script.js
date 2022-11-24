@@ -15,6 +15,14 @@ class Jugador {
   }
 }
 
+function entrar(){
+  // alert("hiciste click amigo");
+  let contenedor0=document.getElementById("c0");
+  let contenedor1=document.getElementById("c1");
+  contenedor1.className ="muestro";
+  contenedor0.className ="oculto";
+}
+
 function darVuelta() {
   if (auxm) return;
   if (this === cuadroUno) return;

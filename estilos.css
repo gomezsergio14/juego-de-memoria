@@ -26,13 +26,24 @@ input{
 h3 {
   margin: 5px;
 }
-.contenedor1 {
+/* .contenedor1 {
   width: 80%;
   height: 60vh; /*100vh*/
-  margin: auto;
-  display: none;
+  /* margin: auto;
+  display: none; */
   /*display: flex;*//*esto lo tendrias que activar con js*/
-  /*flex-wrap: wrap;*//*activar cuando se active el display flex*/
+  /*flex-wrap: wrap;*//*activar cuando se active el display flex
+} */
+/*clases para mostrar el contenedor 1*/
+.muestro{
+  width: 80%;
+  height: 80vh; /*100vh*/
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.oculto{
+  display: none;
 }
 button {
   display: block;
@@ -66,8 +77,18 @@ button {
 .frente {
   transform: rotateY(180deg);
 }
+.bi-controller{
+  width: 100px;
+  height: 100px;
+  color: #4c5454;
+}
 .dorso {
-  background-color: #4c5454;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #4c5454; */
+  background-color: #FF715B;
+  border: 3px solid #4c5454;
 }
 
 /*colores para el juego*/
