@@ -57,6 +57,7 @@ button {
   transition: transform 0.3s;
   position: relative;
 }
+
 .cuadro:active {
   transform: scale(0.97);
   transition: transform 0.1s;
@@ -116,3 +117,4 @@ button {
 .color7 {
   background-color: darkred;
 }
+

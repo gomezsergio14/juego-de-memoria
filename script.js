@@ -7,16 +7,16 @@ let auxm = false;
 let cuadroUno, cuadroDos;
 let jugadores = [];
 let dificultadElegida = "dificil";
+let contador=0;
 
 class Jugador {
-  constructor(nombre, dificultad) {
+  constructor(nombre, dificultad) {//acordate de sacar lo de la dificultad
     this.nombre = nombre;
     this.dificultad = dificultad;
   }
 }
 
 function entrar(){
-  // alert("hiciste click amigo");
   let contenedor0=document.getElementById("c0");
   let contenedor1=document.getElementById("c1");
   contenedor1.className ="muestro";
@@ -39,12 +39,28 @@ function darVuelta() {
 function coincidencia() {
   let sonIguales = cuadroUno.dataset.carta === cuadroDos.dataset.carta;
   sonIguales ? desactivarCuadros() : ocultar();
+  // if(contador==8){
+  //   alert("todos los pares encontrados");
+  // }
 }
 
 function desactivarCuadros() {
+  contador++;
   cuadroUno.removeEventListener("click", darVuelta);
   cuadroDos.removeEventListener("click", darVuelta);
   reset();
+  if(contador==8){
+    setTimeout(fin,210);
+  }
+}
+function fin(){
+  // alert("todos los pares encontrados");
+  Swal.fire({
+    icon: 'success',
+    title: 'Todos los pares encontrados',
+    showConfirmButton: false,
+    timer: 2500
+  })
 }
 
 function ocultar() {
@@ -67,6 +83,7 @@ function reset() {
     cuadro.style.order = randomPos;
   });
 })();
+
 
 cuadro.forEach((cuadro) => cuadro.addEventListener("click", darVuelta));
 
