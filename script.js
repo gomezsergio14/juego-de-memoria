@@ -88,16 +88,47 @@ function reset() {
     cuadro.style.order = randomPos;
   });
 })();
-async function traerPokemon(){
-  const response= await fetch('https://pokeapi.co/api/v2/pokemon/1/')
+async function traerPokemon(id){
+  const response= await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
   const data= await response.json()
-  console.log(data);
+  //console.log(data);
+  crearTarjeta(data);
 }
+function generarJugadores(cantidad){
+for(let i=1;i<=cantidad;i++){
+  traerPokemon(i);
+}
+}
+function crearTarjeta(pokemon){
+  //contenedorJugadores.innerHTML=``;
+  const contenedorCarta=document.createElement("div");
+  const tarjeta=`<div class="card" style="width: 18rem;">
+  <img src="${pokemon.sprites.front_default}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${pokemon.name}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">INICIAR</a>
+  </div>
+</div>`;
+contenedorCarta.classList.add("col");
+contenedorCarta.innerHTML+=tarjeta;
+contenedorJugadores.appendChild(contenedorCarta);
+}
+//codigo de la tarjeta de bootstrap
+{/* <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">INICIAR</a>
+  </div>
+</div> */}
+
 
 
 //FIN FUNCIONES
 btnMostrar.addEventListener('click',()=>{
-  traerPokemon();
+  generarJugadores(3);
 });
 
 
