@@ -1,20 +1,25 @@
 const cuadro = document.querySelectorAll(".cuadro");
 const btnAgregar = document.getElementById("btnAgregar");
-const nombreJugador = document.getElementById("nombreJugador");
-const ul = document.getElementById("listaJugadores");
+const btnMostrar =document.getElementById("mostrarJugadores");
+const contenedorJugadores=document.getElementById("contenedorJugadores");
+// const nombreJugador = document.getElementById("nombreJugador");
+// const ul = document.getElementById("listaJugadores");
 let controlm = false;
 let auxm = false;
 let cuadroUno, cuadroDos;
-let jugadores = [];
-let dificultadElegida = "dificil";
+// let jugadores = [];
+// let dificultadElegida = "dificil";
 let contador=0;
 
-class Jugador {
-  constructor(nombre, dificultad) {//acordate de sacar lo de la dificultad
-    this.nombre = nombre;
-    this.dificultad = dificultad;
-  }
-}
+// class Jugador {
+//   constructor(nombre, dificultad) {//acordate de sacar lo de la dificultad
+//     this.nombre = nombre;
+//     this.dificultad = dificultad;
+//   }
+// }
+
+
+//FUNCIONES
 
 function entrar(){
   let contenedor0=document.getElementById("c0");
@@ -83,24 +88,40 @@ function reset() {
     cuadro.style.order = randomPos;
   });
 })();
+async function traerPokemon(){
+  const response= await fetch('https://pokeapi.co/api/v2/pokemon/1/')
+  const data= await response.json()
+  console.log(data);
+}
+
+
+//FIN FUNCIONES
+btnMostrar.addEventListener('click',()=>{
+  traerPokemon();
+});
 
 
 cuadro.forEach((cuadro) => cuadro.addEventListener("click", darVuelta));
 
 
 btnAgregar.addEventListener("click", (e) => {
-  e.preventDefault();
-  let estaJugando = nombreJugador.value;
-  const li = document.createElement("li");
-  const p = document.createElement("p");
-  p.textContent = estaJugando;
-  li.appendChild(p);
-  ul.appendChild(li);
-  const jugador = new Jugador(estaJugando, dificultadElegida);
-  sessionStorage.setItem("nombrePlayer", estaJugando);
-  sessionStorage.setItem("difPlayer", dificultadElegida);
+     e.preventDefault();
+     
+    });
+//comento lo siguiente para empezar a aplicar fetch
+// btnAgregar.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   let estaJugando = nombreJugador.value;
+//   const li = document.createElement("li");
+//   const p = document.createElement("p");
+//   p.textContent = estaJugando;
+//   li.appendChild(p);
+//   ul.appendChild(li);
+//   const jugador = new Jugador(estaJugando, dificultadElegida);
+//   sessionStorage.setItem("nombrePlayer", estaJugando);
+//   sessionStorage.setItem("difPlayer", dificultadElegida);
 
   //muestro por consola lo que esta almacenado en sessionstorage
-  console.log(sessionStorage.getItem("nombrePlayer"));
-  console.log(sessionStorage.getItem("difPlayer"));
-});
+  // console.log(sessionStorage.getItem("nombrePlayer"));
+  // console.log(sessionStorage.getItem("difPlayer"));
+//});

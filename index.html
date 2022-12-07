@@ -16,25 +16,26 @@
   <body>
     <div class="contenedor0" id="c0">
       <h1>MEMORAMA</h1>
-      <form action="">
-        <h3>Ingrese el nombre de jugador</h3>
-        <input
+        <h3>Elija el jugador:</h3>
+        <button class="btn btn-primary mb-2" type="submit" id="mostrarJugadores">
+          MOSTRAR JUGADORES
+        </button>
+        <!--Aqui van a ir los jugadores-->
+        <div class="contenedorJugadores" id="contenedorJugadores">
+          <!--por ahora esta vacio-->
+        </div>
+        <!-- <input
           id="nombreJugador"
           type="text"
           placeholder="nombre de jugador..."
-        />
-        <button
-          class="btn btn-success"
-          type="submit"
-          id="btnAgregar"
-          onclick="entrar()"
-        >
-          ENTRAR
+        /> -->
+        <button class="btn btn-success" type="submit" id="btnAgregar" onclick="entrar()">
+          INICIO
         </button>
-      </form>
-      <div class="contenedorLista">
+      
+      <!-- <div class="contenedorLista">
         <ul id="listaJugadores"></ul>
-      </div>
+      </div> -->
     </div>
 
     <div class="contenedor1 oculto" id="c1">
