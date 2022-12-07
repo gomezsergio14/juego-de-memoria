@@ -1,5 +1,5 @@
 const cuadro = document.querySelectorAll(".cuadro");
-const btnAgregar = document.getElementById("btnAgregar");
+const btnIniciar = document.getElementById("btnIniciar");
 const btnMostrar =document.getElementById("mostrarJugadores");
 const contenedorJugadores=document.getElementById("contenedorJugadores");
 // const nombreJugador = document.getElementById("nombreJugador");
@@ -95,9 +95,10 @@ async function traerPokemon(id){
   crearTarjeta(data);
 }
 function generarJugadores(cantidad){
-for(let i=1;i<=cantidad;i++){
-  traerPokemon(i);
-}
+  for(let i=1;i<=cantidad;i++){
+    let j= Math.ceil(Math.random()*200);
+    traerPokemon(j);
+  }
 }
 function crearTarjeta(pokemon){
   //contenedorJugadores.innerHTML=``;
@@ -107,7 +108,7 @@ function crearTarjeta(pokemon){
   <div class="card-body">
     <h5 class="card-title">${pokemon.name}</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">INICIAR</a>
+    <button class="btn btn-primary" id="btnIniciar" type="submit">INICIAR</button>
   </div>
 </div>`;
 contenedorCarta.classList.add("col");
@@ -129,15 +130,15 @@ contenedorJugadores.appendChild(contenedorCarta);
 //FIN FUNCIONES
 btnMostrar.addEventListener('click',()=>{
   generarJugadores(3);
+  btnMostrar.classList.add("oculto");
 });
 
 
 cuadro.forEach((cuadro) => cuadro.addEventListener("click", darVuelta));
 
 
-btnAgregar.addEventListener("click", (e) => {
+btnIniciar.addEventListener("click", (e) => {
      e.preventDefault();
-     
     });
 //comento lo siguiente para empezar a aplicar fetch
 // btnAgregar.addEventListener("click", (e) => {
