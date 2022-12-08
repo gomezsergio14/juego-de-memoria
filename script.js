@@ -1,5 +1,6 @@
 const cuadro = document.querySelectorAll(".cuadro");
 const btnMostrar =document.getElementById("mostrarJugadores");
+const quienJuega=document.getElementById("quienJuega");
 const contenedorJugadores=document.getElementById("contenedorJugadores");
 let inicioTiempo;
 let finTiempo;
@@ -9,8 +10,27 @@ let auxm = false;
 let cuadroUno, cuadroDos;
 let contador=0;
 //FUNCIONES
+function recargarPagina(){
+location.reload();
+}
 
-function entrar(){
+function entrar(idJugador){
+  let tarjeta2;
+  const contenedorCarta2=document.createElement("div");
+  fetch(`https://pokeapi.co/api/v2/pokemon/${idJugador}/`)
+  .then(response=>response.json())
+  .then(data=>{
+     tarjeta2=`<div class="card" style="width: 10rem;">
+     <img src="${data.sprites.front_default}" class="card-img-top" alt="...">
+     <div class="card-body">
+      <h5 class="card-title">Esta jugando: ${data.name}</h5>
+      <button class="btn btn-primary" id="btnRecargar" type="submit" onclick="recargarPagina()">REINICIAR</button>
+
+     </div>
+   </div>`;
+   contenedorCarta2.innerHTML+=tarjeta2;
+   quienJuega.appendChild(contenedorCarta2);
+  })
   inicioTiempo=new Date();
   inicioTiempo=Number(inicioTiempo.getTime());
   let segundaPantalla=document.getElementById("2p");
@@ -19,7 +39,6 @@ function entrar(){
   segundaPantalla.className="muestro2p";
   contenedor1.className ="muestro";
   contenedor0.className ="oculto";
-  
 }
 
 function darVuelta() {
@@ -43,14 +62,13 @@ function coincidencia() {
 function fin(){
   finTiempo=new Date();
   finTiempo=Number(finTiempo.getTime());
-  // tiempoUtilizado=finTiempo-inicioTiempo;
   tiempoUtilizado = Math.floor(.5+(finTiempo-inicioTiempo)/1000);
   Swal.fire({
     icon: 'success',
     title: 'Todos los pares encontrados',
     text:`lo resolviste en ${tiempoUtilizado} segundos`,
     showConfirmButton: false,
-    timer: 2500
+    timer: 3500
   })
 }
 
@@ -86,7 +104,7 @@ function reset() {
   });
 })();
 
-async function traerPokemon(id){
+async function traerJugador(id){
   const response= await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
   const data= await response.json()
   crearTarjeta(data);
@@ -95,7 +113,7 @@ async function traerPokemon(id){
 function generarJugadores(cantidad){
   for(let i=1;i<=cantidad;i++){
     let j= Math.ceil(Math.random()*200);
-    traerPokemon(j);
+    traerJugador(j);
   }
 }
 
@@ -105,8 +123,8 @@ function crearTarjeta(pokemon){
   <img src="${pokemon.sprites.front_default}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${pokemon.name}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <button class="btn btn-primary" id="btnIniciar" type="submit" onclick="entrar()">INICIAR</button>
+    
+    <button class="btn btn-primary" id="btnIniciar" type="submit" onclick="entrar(${pokemon.id})">INICIAR</button>
   </div>
 </div>`;
 contenedorCarta.classList.add("col");
