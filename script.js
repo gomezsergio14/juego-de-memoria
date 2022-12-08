@@ -48,6 +48,7 @@ function fin(){
   Swal.fire({
     icon: 'success',
     title: 'Todos los pares encontrados',
+    text:`lo resolviste en ${tiempoUtilizado} segundos`,
     showConfirmButton: false,
     timer: 2500
   })
