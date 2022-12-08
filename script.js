@@ -9,9 +9,18 @@ let controlm = false;
 let auxm = false;
 let cuadroUno, cuadroDos;
 let contador=0;
+let yaJugo;
+let yaJugoNombre;
+
 //FUNCIONES
-function recargarPagina(){
+function cambiarJugador(){
 location.reload();
+}
+
+function mostrarTabla(){
+  // let muestro=localStorage.getItem();
+  console.log(yaJugoNombre);
+  console.log(tiempoUtilizado);
 }
 
 function entrar(idJugador){
@@ -24,10 +33,11 @@ function entrar(idJugador){
      <img src="${data.sprites.front_default}" class="card-img-top" alt="...">
      <div class="card-body">
       <h5 class="card-title">Esta jugando: ${data.name}</h5>
-      <button class="btn btn-primary" id="btnRecargar" type="submit" onclick="recargarPagina()">REINICIAR</button>
-
+      <button class="btn btn-primary" id="btnRecargar" type="submit" onclick="cambiarJugador()">Cambiar jugador</button>
+      <button class="btn btn-primary mt-1" id="btnTabla" type="submit" onclick="mostrarTabla()">Ver tiempos</button>
      </div>
    </div>`;
+   yaJugo=idJugador;
    contenedorCarta2.innerHTML+=tarjeta2;
    quienJuega.appendChild(contenedorCarta2);
   })
@@ -63,12 +73,20 @@ function fin(){
   finTiempo=new Date();
   finTiempo=Number(finTiempo.getTime());
   tiempoUtilizado = Math.floor(.5+(finTiempo-inicioTiempo)/1000);
+  
+  fetch(`https://pokeapi.co/api/v2/pokemon/${yaJugo}/`)
+  .then(response=>response.json())
+  .then(data=>{
+    yaJugoNombre=data.name;
+   localStorage.setItem(data.name,tiempoUtilizado); 
+  })
+
   Swal.fire({
     icon: 'success',
     title: 'Todos los pares encontrados',
     text:`lo resolviste en ${tiempoUtilizado} segundos`,
     showConfirmButton: false,
-    timer: 3500
+    timer: 3000
   })
 }
 
