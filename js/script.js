@@ -157,23 +157,3 @@ btnMostrar.addEventListener("click", () => {
 
 cuadro.forEach((cuadro) => cuadro.addEventListener("click", darVuelta));
 
-// btnIniciar.addEventListener("click", (e) => {
-//      e.preventDefault();
-//     });
-//comento lo siguiente para empezar a aplicar fetch
-// btnAgregar.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   let estaJugando = nombreJugador.value;
-//   const li = document.createElement("li");
-//   const p = document.createElement("p");
-//   p.textContent = estaJugando;
-//   li.appendChild(p);
-//   ul.appendChild(li);
-//   const jugador = new Jugador(estaJugando, dificultadElegida);
-//   sessionStorage.setItem("nombrePlayer", estaJugando);
-//   sessionStorage.setItem("difPlayer", dificultadElegida);
-
-//muestro por consola lo que esta almacenado en sessionstorage
-// console.log(sessionStorage.getItem("nombrePlayer"));
-// console.log(sessionStorage.getItem("difPlayer"));
-//});
