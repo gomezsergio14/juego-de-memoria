@@ -1,54 +1,54 @@
 const cuadro = document.querySelectorAll(".cuadro");
-const btnMostrar =document.getElementById("mostrarJugadores");
-const quienJuega=document.getElementById("quienJuega");
-const contenedorJugadores=document.getElementById("contenedorJugadores");
+const btnMostrar = document.getElementById("mostrarJugadores");
+const quienJuega = document.getElementById("quienJuega");
+const contenedorJugadores = document.getElementById("contenedorJugadores");
 let inicioTiempo;
 let finTiempo;
 let tiempoUtilizado;
 let controlm = false;
 let auxm = false;
 let cuadroUno, cuadroDos;
-let contador=0;
+let contador = 0;
 let yaJugo;
 let yaJugoNombre;
 
 //FUNCIONES
-function cambiarJugador(){
-location.reload();
+function cambiarJugador() {
+  location.reload();
 }
 
-function mostrarTabla(){
-  // let muestro=localStorage.getItem();
-  console.log(yaJugoNombre);
-  console.log(tiempoUtilizado);
-}
+// function mostrarTabla(){
+//   let muestro=localStorage.getItem();
+//   console.log(yaJugoNombre);
+//   console.log(tiempoUtilizado);
+// }
 
-function entrar(idJugador){
+function entrar(idJugador) {
   let tarjeta2;
-  const contenedorCarta2=document.createElement("div");
+  const contenedorCarta2 = document.createElement("div");
   fetch(`https://pokeapi.co/api/v2/pokemon/${idJugador}/`)
-  .then(response=>response.json())
-  .then(data=>{
-     tarjeta2=`<div class="card" style="width: 10rem;">
+    .then((response) => response.json())
+    .then((data) => {
+      tarjeta2 = `<div class="card" style="width: 10rem;">
      <img src="${data.sprites.front_default}" class="card-img-top" alt="...">
      <div class="card-body">
       <h5 class="card-title">Esta jugando: ${data.name}</h5>
-      <button class="btn btn-primary" id="btnRecargar" type="submit" onclick="cambiarJugador()">Cambiar jugador</button>
+      <button class="btn btn-primary" id="btnRecargar" type="submit" onclick="cambiarJugador()">Resetear</button>
       <button class="btn btn-primary mt-1" id="btnTabla" type="submit" onclick="mostrarTabla()">Ver tiempos</button>
      </div>
    </div>`;
-   yaJugo=idJugador;
-   contenedorCarta2.innerHTML+=tarjeta2;
-   quienJuega.appendChild(contenedorCarta2);
-  })
-  inicioTiempo=new Date();
-  inicioTiempo=Number(inicioTiempo.getTime());
-  let segundaPantalla=document.getElementById("2p");
-  let contenedor0=document.getElementById("c0");
-  let contenedor1=document.getElementById("c1");
-  segundaPantalla.className="muestro2p";
-  contenedor1.className ="muestro";
-  contenedor0.className ="oculto";
+      yaJugo = idJugador;
+      contenedorCarta2.innerHTML += tarjeta2;
+      quienJuega.appendChild(contenedorCarta2);
+    });
+  inicioTiempo = new Date();
+  inicioTiempo = Number(inicioTiempo.getTime());
+  let segundaPantalla = document.getElementById("2p");
+  let contenedor0 = document.getElementById("c0");
+  let contenedor1 = document.getElementById("c1");
+  segundaPantalla.className = "muestro2p";
+  contenedor1.className = "muestro";
+  contenedor0.className = "oculto";
 }
 
 function darVuelta() {
@@ -69,25 +69,25 @@ function coincidencia() {
   sonIguales ? desactivarCuadros() : ocultar();
 }
 
-function fin(){
-  finTiempo=new Date();
-  finTiempo=Number(finTiempo.getTime());
-  tiempoUtilizado = Math.floor(.5+(finTiempo-inicioTiempo)/1000);
-  
+function fin() {
+  finTiempo = new Date();
+  finTiempo = Number(finTiempo.getTime());
+  tiempoUtilizado = Math.floor(0.5 + (finTiempo - inicioTiempo) / 1000);
+
   fetch(`https://pokeapi.co/api/v2/pokemon/${yaJugo}/`)
-  .then(response=>response.json())
-  .then(data=>{
-    yaJugoNombre=data.name;
-   localStorage.setItem(data.name,tiempoUtilizado); 
-  })
+    .then((response) => response.json())
+    .then((data) => {
+      yaJugoNombre = data.name;
+      localStorage.setItem(data.name, tiempoUtilizado);
+    });
 
   Swal.fire({
-    icon: 'success',
-    title: 'Todos los pares encontrados',
-    text:`lo resolviste en ${tiempoUtilizado} segundos`,
+    icon: "success",
+    title: "Todos los pares encontrados",
+    text: `lo resolviste en ${tiempoUtilizado} segundos`,
     showConfirmButton: false,
-    timer: 3000
-  })
+    timer: 3000,
+  });
 }
 
 function desactivarCuadros() {
@@ -95,11 +95,10 @@ function desactivarCuadros() {
   cuadroUno.removeEventListener("click", darVuelta);
   cuadroDos.removeEventListener("click", darVuelta);
   reset();
-  if(contador==8){
-    setTimeout(fin,210);
+  if (contador == 8) {
+    setTimeout(fin, 210);
   }
 }
-
 
 function ocultar() {
   auxm = true;
@@ -122,22 +121,22 @@ function reset() {
   });
 })();
 
-async function traerJugador(id){
-  const response= await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-  const data= await response.json()
+async function traerJugador(id) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
+  const data = await response.json();
   crearTarjeta(data);
 }
 
-function generarJugadores(cantidad){
-  for(let i=1;i<=cantidad;i++){
-    let j= Math.ceil(Math.random()*200);
+function generarJugadores(cantidad) {
+  for (let i = 1; i <= cantidad; i++) {
+    let j = Math.ceil(Math.random() * 200);
     traerJugador(j);
   }
 }
 
-function crearTarjeta(pokemon){
-  const contenedorCarta=document.createElement("div");
-  const tarjeta=`<div class="card" style="width: 18rem;">
+function crearTarjeta(pokemon) {
+  const contenedorCarta = document.createElement("div");
+  const tarjeta = `<div class="card" style="width: 18rem;">
   <img src="${pokemon.sprites.front_default}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${pokemon.name}</h5>
@@ -145,20 +144,18 @@ function crearTarjeta(pokemon){
     <button class="btn btn-primary" id="btnIniciar" type="submit" onclick="entrar(${pokemon.id})">INICIAR</button>
   </div>
 </div>`;
-contenedorCarta.classList.add("col");
-contenedorCarta.innerHTML+=tarjeta;
-contenedorJugadores.appendChild(contenedorCarta);
-
+  contenedorCarta.classList.add("col");
+  contenedorCarta.innerHTML += tarjeta;
+  contenedorJugadores.appendChild(contenedorCarta);
 }
 
 //FIN FUNCIONES
-btnMostrar.addEventListener('click',()=>{
+btnMostrar.addEventListener("click", () => {
   generarJugadores(3);
   btnMostrar.classList.add("oculto");
 });
 
 cuadro.forEach((cuadro) => cuadro.addEventListener("click", darVuelta));
-
 
 // btnIniciar.addEventListener("click", (e) => {
 //      e.preventDefault();
@@ -176,7 +173,7 @@ cuadro.forEach((cuadro) => cuadro.addEventListener("click", darVuelta));
 //   sessionStorage.setItem("nombrePlayer", estaJugando);
 //   sessionStorage.setItem("difPlayer", dificultadElegida);
 
-  //muestro por consola lo que esta almacenado en sessionstorage
-  // console.log(sessionStorage.getItem("nombrePlayer"));
-  // console.log(sessionStorage.getItem("difPlayer"));
+//muestro por consola lo que esta almacenado en sessionstorage
+// console.log(sessionStorage.getItem("nombrePlayer"));
+// console.log(sessionStorage.getItem("difPlayer"));
 //});

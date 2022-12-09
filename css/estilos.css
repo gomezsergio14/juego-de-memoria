@@ -18,9 +18,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
 }
-input{
+input {
   width: 256px;
 }
 h3 {
@@ -29,31 +28,31 @@ h3 {
 /* .contenedor1 {
   width: 80%;
   height: 60vh; /*100vh*/
-  /* margin: auto;
+/* margin: auto;
   display: none; */
-  /*display: flex;*//*esto lo tendrias que activar con js*/
-  /*flex-wrap: wrap;*//*activar cuando se active el display flex
+/*display: flex;*/ /*esto lo tendrias que activar con js*/
+/*flex-wrap: wrap;*/ /*activar cuando se active el display flex
 } */
 /*clases para mostrar el contenedor 1*/
-.muestro{
+.muestro {
   width: 80%;
   height: 80vh; /*100vh*/
   margin: auto;
   display: flex;
   flex-wrap: wrap;
 }
-.muestro2p{
+.muestro2p {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
 }
-.quienJuega{
+.quienJuega {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.oculto{
+.oculto {
   display: none;
 }
 button {
@@ -89,7 +88,7 @@ button {
 .frente {
   transform: rotateY(180deg);
 }
-.bi-controller{
+.bi-controller {
   width: 100px;
   height: 100px;
   color: #4c5454;
@@ -99,7 +98,7 @@ button {
   justify-content: center;
   align-items: center;
   /* background-color: #4c5454; */
-  background-color: #FF715B;
+  background-color: #ff715b;
   border: 3px solid #4c5454;
 }
 
@@ -128,4 +127,3 @@ button {
 .color7 {
   background-color: darkred;
 }
-
