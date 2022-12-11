@@ -18,12 +18,22 @@ function cambiarJugador() {
 }
 
 function mostrarTabla(){
+ let tabla   = document.createElement("table");
+ let tblBody = document.createElement("tbody");
 for(let i=0;i<localStorage.length;i++){
   let clave=localStorage.key(i);
   console.log("Clave: "+clave);
   console.log("Valor: "+localStorage.getItem(clave))
+  let hilera = document.createElement("tr");
+  let celda = document.createElement("td");
+  let textoCelda = document.createTextNode("Jugador: "+clave+", tiempo: "+localStorage.getItem(clave));
+  celda.appendChild(textoCelda);
+  hilera.appendChild(celda);
+   tblBody.appendChild(hilera);
 }
-  
+  tabla.appendChild(tblBody);
+  quienJuega.appendChild(tabla);
+  tabla.setAttribute("border", "2");
  }
 
 function entrar(idJugador) {
