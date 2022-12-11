@@ -17,11 +17,14 @@ function cambiarJugador() {
   location.reload();
 }
 
-// function mostrarTabla(){
-//   let muestro=localStorage.getItem();
-//   console.log(yaJugoNombre);
-//   console.log(tiempoUtilizado);
-// }
+function mostrarTabla(){
+for(let i=0;i<localStorage.length;i++){
+  let clave=localStorage.key(i);
+  console.log("Clave: "+clave);
+  console.log("Valor: "+localStorage.getItem(clave))
+}
+  
+ }
 
 function entrar(idJugador) {
   let tarjeta2;
@@ -77,7 +80,7 @@ function fin() {
   fetch(`https://pokeapi.co/api/v2/pokemon/${yaJugo}/`)
     .then((response) => response.json())
     .then((data) => {
-      yaJugoNombre = data.name;
+      yaJugoNombre = data.name;/*ELIMINAR ESTO MAS ADELANTE, LA VARIABLE TAMBIEN */
       localStorage.setItem(data.name, tiempoUtilizado);
     });
 
@@ -86,7 +89,7 @@ function fin() {
     title: "Todos los pares encontrados",
     text: `lo resolviste en ${tiempoUtilizado} segundos`,
     showConfirmButton: false,
-    timer: 3000,
+    timer: 2700,
   });
 }
 
@@ -140,7 +143,6 @@ function crearTarjeta(pokemon) {
   <img src="${pokemon.sprites.front_default}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${pokemon.name}</h5>
-    
     <button class="btn btn-primary" id="btnIniciar" type="submit" onclick="entrar(${pokemon.id})">INICIAR</button>
   </div>
 </div>`;
