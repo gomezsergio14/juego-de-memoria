@@ -41,7 +41,7 @@ h3 {
 }
 .quienJuega {
   display: flex;
-  flex-direction: column;/*agregue esto par mostrar la tabla debajo del jugador*/
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

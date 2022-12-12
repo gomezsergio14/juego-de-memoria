@@ -2,6 +2,7 @@ const cuadro = document.querySelectorAll(".cuadro");
 const btnMostrar = document.getElementById("mostrarJugadores");
 const quienJuega = document.getElementById("quienJuega");
 const contenedorJugadores = document.getElementById("contenedorJugadores");
+const contenedorTabla = document.getElementById("contenedorTabla");
 let inicioTiempo;
 let finTiempo;
 let tiempoUtilizado;
@@ -19,6 +20,7 @@ function cambiarJugador() {
 
 function mostrarTabla(){
  let tabla   = document.createElement("table");
+ contenedorTabla.innerHTML='';
  let tblBody = document.createElement("tbody");
 for(let i=0;i<localStorage.length;i++){
   let clave=localStorage.key(i);
@@ -26,13 +28,13 @@ for(let i=0;i<localStorage.length;i++){
   console.log("Valor: "+localStorage.getItem(clave))
   let hilera = document.createElement("tr");
   let celda = document.createElement("td");
-  let textoCelda = document.createTextNode("Jugador: "+clave+", tiempo: "+localStorage.getItem(clave));
+  let textoCelda = document.createTextNode(clave+":"+localStorage.getItem(clave)+" segundos");
   celda.appendChild(textoCelda);
   hilera.appendChild(celda);
    tblBody.appendChild(hilera);
 }
   tabla.appendChild(tblBody);
-  quienJuega.appendChild(tabla);
+  contenedorTabla.appendChild(tabla);
   tabla.setAttribute("border", "2");
  }
 
